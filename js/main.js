@@ -57,6 +57,17 @@ function showTabStatus() {
         //grab the name of beer
         clone.querySelector('.beer-tap-name').textContent = tap.beer;
 
+
+
+// SECTION 4 ALERTS
+
+
+// CHANGE TAP
+if(tap.level<=2450){
+    document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`
+    document.querySelector('.tap-level').style.backgroundColor = "red";
+};
+
         //append clone to div
         document.querySelector(".status").appendChild(clone);
 
@@ -74,9 +85,14 @@ function showTabStatus() {
 
 
 
+// BUY BEER
+
+// let beerStorage = myObject.storage;
+// if(tap.storage.amount<=2){
+//     document.querySelector(".more-beer").textContent = `Buy more: ${tap.beer}`
+// };
 
 
-// SECTION 4
 
 // SECTION 5
 
