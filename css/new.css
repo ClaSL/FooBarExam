@@ -1,2 +1,9 @@
-body {
-  margin: 0; }
+.capacity {
+  width: 80px;
+  height: 250px;
+  background-color: lightyellow; }
+
+.tap-status {
+  width: 80px;
+  height: 250px;
+  background-color: yellow; }

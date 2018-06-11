@@ -1,9 +1,67 @@
-//npm init
+<!DOCTYPE html>
+<html lang="en">
 
-//install node-sass
-//npm install --save-dev node-sass
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FooBar Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/new.css" />
+</head>
+</head>
 
-//add a script to the package.json
-//"my-new-sass": "node-sass myfile.scss output.css -w"
+<body>
+    <h1>FooBar Dashboard</h1>
 
-//npm run my-sass
+    <!-- WAITING -->
+    <h1>People in line: </h1>
+    <div class="waiting"></div>
+
+    <!-- SERVED -->
+    <h1>People getting served: </h1>
+    <div class="people-served"></div>
+
+    <!-- BEERS SERVED -->
+    <h1>Beers served today: </h1>
+    <div class="beers-served"></div>
+
+    <!-- TAP STATUS -->
+    <div class="status"></div>
+
+    <template class="status-temp">
+        <div class="capacity">
+            <div class="tap-status"></div>
+        </div>
+    </template>
+
+
+    <!--ALERT -->
+    <!-- Buy more beer -->
+    <div class="more-beer">
+        <h1>Buy more:</h1>
+    </div>
+    <!-- Change tap-->
+    <div class="change-tap">
+        <h1>Change tap:</h1>
+    </div>
+
+    <!-- BEER INFO -->
+    <div class="beer-info">
+
+    </div>
+
+    <!-- BARTENDERS -->
+    <div class="bartenders">
+
+    </div>
+
+
+
+
+
+    <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
