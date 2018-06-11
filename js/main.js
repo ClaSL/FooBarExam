@@ -5,6 +5,7 @@ let beersServed = 0;
 let lastIdCounted = 0;
 
 
+
 document.addEventListener("DOMContentLoaded", loadScript);
 
 function loadScript() {
@@ -19,7 +20,7 @@ function loadScript() {
         }
     });
 
-    // SECTION 1 : Display PEOPLE IN LINE
+    // SECTION 1 : Display PEOPLE IN LINE and PEOPLE GETTING SERVED
     document.querySelector('.waiting').textContent = `${myObject.queue.length}`;
     document.querySelector('.people-served').textContent = `People served: ${myObject.serving.length}`;
 
@@ -27,13 +28,54 @@ function loadScript() {
     // SECTION 2 : Display BEERS SERVED TODAY
     document.querySelector('.beers-served').textContent = `Served beers: ${beersServed}`;
 
-    // SECTION 3 : Display tap capacity/level
-    
-    // myObject.taps.forEach(tapLavel => {
-    // document.querySelector('.tap-status').style.height = `${myObject.taps.level}0px`;})
+    // SECTION 3 : Display TAP CAPACITY/LEVEL
 
+    //clean container:
+    document.querySelector(".status").innerHTML = "";
+
+    showTabStatus();
 
 };
+
+function showTabStatus() {
+    console.log(myObject.taps);
+
+    let taps = myObject.taps;
+
+    taps.forEach(tap => {
+
+        console.log(tap.level);
+
+
+        //define template
+        let tapTemplate = document.querySelector('.status-temp').content;
+        //define clone
+        let clone = tapTemplate.cloneNode(true);
+
+        //grab the value of level and set as height of level
+        clone.querySelector('.tap-level').style.height = `${tap.level/10}px`;
+        //grab the name of beer
+        clone.querySelector('.beer-tap-name').textContent = tap.beer;
+
+        //append clone to div
+        document.querySelector(".status").appendChild(clone);
+
+
+    });
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
 // SECTION 4
 
 // SECTION 5

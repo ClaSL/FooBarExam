@@ -1,12 +1,20 @@
+/* TAPS LEVEL */
+
 
 .capacity{
     width: 80px;
     height: 250px;
-    background-color:lightyellow;
+    background-color:lightblue;
+    transform: rotate(180deg);
+   
+   
 }
 
-.tap-status{
+.tap-level{
     width: 80px;
     height:250px;
     background-color: yellow;
+
 }
+
+/**/
