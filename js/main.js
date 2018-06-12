@@ -30,13 +30,16 @@ function loadScript() {
 
 
 
-    
+
 
     // This is for Section 3:
     showTabStatus();
 
     //This is for Section 6: 
     bartenderInfo();
+
+    //This is for Section 4: 
+    showStorageStatus()
 
 };
 
@@ -67,13 +70,11 @@ function showTabStatus() {
 
 
 
-        // SECTION 4 ALERTS
-
-
-        // 4.1 CHANGE TAP
-        if (tap.level <= 2450) {
-            document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`
-            document.querySelector('.tap-level').style.backgroundColor = "red";
+// SECTION 4 ALERTS
+// 4.1 CHANGE TAP
+        if (tap.level <= 500) {
+            document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`;
+            clone.querySelector('.tap-level').style.backgroundColor = "red";
         };
 
         //append clone to div
@@ -86,10 +87,22 @@ function showTabStatus() {
 
 // 4.2 BUY BEER
 
-// let beerStorage = myObject.storage;
-// if(tap.storage.amount<=2){
-//     document.querySelector(".more-beer").textContent = `Buy more: ${tap.beer}`
-// };
+function showStorageStatus() {
+    console.log(myObject.storage);
+
+    // This is for Section 3: clean container:
+    document.querySelector(".more-beer").innerHTML = "";
+
+    let storage = myObject.storage;
+
+    storage.forEach(stor => {
+
+        if (stor.amount <= 2) {
+            document.querySelector(".more-beer").textContent = `Buy more: ${stor.name}`
+        };
+    });
+
+};
 
 
 
@@ -125,7 +138,7 @@ function bartenderInfo() {
         document.querySelector(".bartenders").appendChild(bartClone);
     });
 
-}
+};
 
 
 
