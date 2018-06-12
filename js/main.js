@@ -39,7 +39,10 @@ function loadScript() {
     bartenderInfo();
 
     //This is for Section 4: 
-    showStorageStatus()
+    showStorageStatus();
+
+    //This is for Section 5: 
+    beerInfo();
 
 };
 
@@ -70,9 +73,9 @@ function showTabStatus() {
 
 
 
-// SECTION 4 ALERTS
-// 4.1 CHANGE TAP
-        if (tap.level <= 500) {
+        // SECTION 4 ALERTS
+        // 4.1 CHANGE TAP
+        if (tap.level <= 2400) {
             document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`;
             clone.querySelector('.tap-level').style.backgroundColor = "red";
         };
@@ -88,7 +91,7 @@ function showTabStatus() {
 // 4.2 BUY BEER
 
 function showStorageStatus() {
-    console.log(myObject.storage);
+    //console.log(myObject.storage);
 
     // This is for Section 3: clean container:
     document.querySelector(".more-beer").innerHTML = "";
@@ -107,6 +110,41 @@ function showStorageStatus() {
 
 
 // SECTION 5 BEER INFO
+
+function beerInfo() {
+    console.log(myObject.beertypes);
+
+    // This is for Section 3: clean container:
+    document.querySelector(".beer-info").innerHTML = "";
+
+    let beers = myObject.beertypes;
+
+    beers.forEach(beer => {
+        console.log(beer.name);
+
+        //define template
+        let beersTemplate = document.querySelector('.beers-temp').content;
+        //define clone
+        let beerClone = beersTemplate.cloneNode(true);
+
+        //get and display the label
+        beerClone.querySelector('.beer-label').src = `images/${beer.label}`;
+
+        //get and display the name 
+        beerClone.querySelector('.beer-name').textContent = `${beer.name}`;
+        //get and display category
+        beerClone.querySelector('.beer-category').textContent = `${beer.category}`;
+
+        //append clone to div
+        document.querySelector(".beer-info").appendChild(beerClone);
+    });
+
+};
+
+
+
+
+
 
 // SECTION 6 BARTENDERS
 
@@ -133,6 +171,10 @@ function bartenderInfo() {
         bartClone.querySelector('.bartStatus').textContent = `${bart.status}`;
         //get and display the statusdetail 
         bartClone.querySelector('.statusDetail').textContent = `${bart.statusDetail}`;
+
+        if (bart.status == "WORKING") {
+            bartClone.querySelector('.bartStatus').style.backgroundColor = "green";
+        };
 
         //append clone to div
         document.querySelector(".bartenders").appendChild(bartClone);
