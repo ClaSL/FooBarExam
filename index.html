@@ -8,27 +8,26 @@
     <title>FooBar Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/new.css" />
 
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro" rel="stylesheet">
 </head>
 
 <body>
 
-    <h1 id="title">FooBar Dashboard</h1>
+    <h1 id="title"> &lt; FooBar Dashboard &gt; </h1>
 
 
     <!-- BAR INFO-->
 
     <div id="bar-info">
-        <h1 class="info-title">BAR INFO</h1>
+        <h1 class="info-title">&lt; BAR INFO &gt;</h1>
         <!-- WAITING -->
         <!-- SERVED -->
         <!-- BEERS SERVED -->
 
 
-        <h1>People in line: </h1>
-        <h1>People getting served: </h1>
-        <h1>Beers served today: </h1>
+        <h2>People in line: </h2>
+        <h2>People getting served: </h2>
+        <h2>Beers served today: </h2>
 
         <div class="waiting"></div>
         <div class="people-served"></div>
@@ -42,15 +41,15 @@
         <!-- BARTENDERS -->
         <div class="column">
             <div id="bart-box">
-                <h1 class="info-title">BARTENDERS</h1>
+                <h1 class="info-title">&lt; BARTENDERS &gt;</h1>
 
                 <div class="bartenders"></div>
 
                 <template class="bartTemp">
 
-                    <h1 class="bartName"></h1>
+                    <h2 class="bartName"></h2>
                     <h2 class="bartStatus"></h2>
-                    <h2 class="statusDetail"></h2>
+                    <h3 class="statusDetail"></h3>
 
                 </template>
             </div>
@@ -61,11 +60,11 @@
         <div class="column big-alert-box">
 
             <!-- Buy more beer -->
-            <h1 class="info-title">ALERT</h1>
-            <div id="beer-alert-box small-alert-box">
+            <h1 class="info-title">&lt; ALERT &gt;</h1>
+            <div id="beer-alert-box">
 
 
-                <h1>Buy more:</h1>
+                <h2>FILL STORAGE:</h2>
                 <ul class="buy-beer"></ul>
 
                 <template class="beer-list-temp">
@@ -78,7 +77,7 @@
             <div id="tap-alert-box small-alert-box">
 
                 <!-- Change tap-->
-                <h1>Change tap:</h1>
+                <h2>CHANGE TAP:</h2>
                 <ul class="change-tap"></ul>
 
                 <template class="tap-list-temp">
@@ -98,7 +97,7 @@
     <!-- TAP STATUS -->
 
     <div id="big-tap-status-box">
-        <h1>Beers tap status: </h1>
+        <h1>&lt; BEER TAP STATUS &gt;</h1>
 
         <div class="status-wrap">
             <div class="status"></div>
@@ -117,11 +116,14 @@
     </div>
 
     <!-- BEER INFO -->
+
+    <div id="big-beer-info-box">
+            <h1>&lt; BEER INFO &gt;</h1>
     <div class="beer-info"></div>
 
     <template class="beers-temp">
-        <h1 class="beer-name"></h1>
         <img class="beer-label" src="">
+        <h1 class="beer-name"></h1>
         <h2 class="beer-category"></h2>
         <button class="read-more">More info</button>
 
@@ -129,14 +131,14 @@
 
         <article class="modal-content hide">
 
-            <h1 class="modal-name"></h1>
-            <h3 class="modal-category"></h3>
-            <p class="modal-alc"></p>
+            <h3 class="modal-alc"></h3>
             <p class="modal-description"></p>
 
         </article>
 
     </template>
+
+</div>
 
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
     <script src="js/main.js"></script>

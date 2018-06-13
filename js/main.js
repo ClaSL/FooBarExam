@@ -9,7 +9,7 @@ let lastIdCounted = 0;
 
 document.addEventListener("DOMContentLoaded", getAllData);
 
-function getAllData(){
+function getAllData() {
     loadScript();
     getBeerData();
 }
@@ -47,14 +47,14 @@ function loadScript() {
     //This is for Section 4: 
     showStorageStatus();
 
-    
+
 
     //This is for Section 5b More Info:
     //showDetails() 
 
 };
 
-function getBeerData(){
+function getBeerData() {
     let data = FooBar.getData();
     beers = JSON.parse(data).beertypes;
 
@@ -164,7 +164,7 @@ function beerInfo() {
 
     // let beers = myObject.beertypes;
 
-    
+
 
     beers.forEach(beer => {
         // console.log(beer.name);
@@ -185,7 +185,7 @@ function beerInfo() {
         let button = beerClone.querySelector('.read-more');
         let modal = beerClone.querySelector(".modal-content");
 
-        button.addEventListener("click", function(){
+        button.addEventListener("click", function () {
             modal.classList.toggle("hide");
 
         })
@@ -193,10 +193,9 @@ function beerInfo() {
         // 5b MORE BEER INFO
 
 
-        beerClone.querySelector(".modal-name").textContent = `${beer.name}`;
-        beerClone.querySelector(".modal-category").textContent = `${beer.category}`;
+        
         beerClone.querySelector(".modal-description").textContent = `${beer.description.overallImpression}`;
-        beerClone.querySelector(".modal-alc").textContent = `${beer.alc}`;
+        beerClone.querySelector(".modal-alc").textContent = `${beer.alc}% alc`;
 
 
         //modal.classList.remove("hide")
@@ -242,9 +241,27 @@ function bartenderInfo() {
         //get and display the statusdetail 
         bartClone.querySelector('.statusDetail').textContent = `${bart.statusDetail}`;
 
-        if (bart.status == "WORKING") {
+        if (bart.status === "WORKING") {
             bartClone.querySelector('.bartStatus').style.backgroundColor = "green";
+        } else {
+            bartClone.querySelector('.bartStatus, .statusDetail, .bartName').style.opacity = 0.5;
         };
+    
+
+        //Adjustment of activity string
+        if (bart.statusDetail === "pourBeer") {
+            bartClone.querySelector(".statusDetail").textContent = `...is pouring beer`;
+        } else if (bart.statusDetail === "reserveTap") {
+            bartClone.querySelector(".statusDetail").textContent = `...reserving tap`;
+        } else if (bart.statusDetail === "startServing") {
+            bartClone.querySelector(".statusDetail").textContent = `...starts serving`;
+        } else if (bart.statusDetail === "receivePayment") {
+            bartClone.querySelector(".statusDetail").textContent = `...receiveing payment`;
+        } else if (bart.statusDetail === "releaseTap") {
+            bartClone.querySelector(".statusDetail").textContent = `...releasing tap`;
+        } else {
+            bartClone.querySelector(".statusDetail").textContent = `...is waiting`;
+        }
 
         //append clone to div
         document.querySelector(".bartenders").appendChild(bartClone);
