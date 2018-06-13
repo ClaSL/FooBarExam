@@ -1,15 +1,21 @@
 "use strict"
 
 let myObject;
+let beers;
 let beersServed = 0;
 let lastIdCounted = 0;
 
 
 
-document.addEventListener("DOMContentLoaded", loadScript);
+document.addEventListener("DOMContentLoaded", getAllData);
+
+function getAllData(){
+    loadScript();
+    getBeerData();
+}
 
 function loadScript() {
-    let data = FooBar.getData();
+    let data = FooBar.getData(true);
     myObject = JSON.parse(data);
     console.log(myObject);
 
@@ -22,11 +28,11 @@ function loadScript() {
 
     // SECTION 1 : Display PEOPLE IN LINE and PEOPLE GETTING SERVED
     document.querySelector('.waiting').textContent = `${myObject.queue.length}`;
-    document.querySelector('.people-served').textContent = `People served: ${myObject.serving.length}`;
+    document.querySelector('.people-served').textContent = `${myObject.serving.length}`;
 
 
     // SECTION 2 : Display BEERS SERVED TODAY
-    document.querySelector('.beers-served').textContent = `Served beers: ${beersServed}`;
+    document.querySelector('.beers-served').textContent = `${beersServed}`;
 
 
 
@@ -41,11 +47,20 @@ function loadScript() {
     //This is for Section 4: 
     showStorageStatus();
 
-    //This is for Section 5: 
-    beerInfo();
+    
+
+    //This is for Section 5b More Info:
+    //showDetails() 
 
 };
 
+function getBeerData(){
+    let data = FooBar.getData();
+    beers = JSON.parse(data).beertypes;
+
+    //This is for Section 5: 
+    beerInfo();
+};
 
 // SECTION 3 : Display TAP CAPACITY/LEVEL
 function showTabStatus() {
@@ -53,6 +68,8 @@ function showTabStatus() {
 
     // This is for Section 3: clean container:
     document.querySelector(".status").innerHTML = "";
+    // also empty change-tap list!
+    document.querySelector(".change-tap").innerHTML = "";
 
     let taps = myObject.taps;
 
@@ -73,15 +90,32 @@ function showTabStatus() {
 
 
 
+
         // SECTION 4 ALERTS
         // 4.1 CHANGE TAP
-        if (tap.level <= 2400) {
-            document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`;
+        if (tap.level <= 2450) {
+
             clone.querySelector('.tap-level').style.backgroundColor = "red";
+
+            // clone changetab template
+
+            let tapListTemplate = document.querySelector('.tap-list-temp').content;
+            //define clone
+            let tapListClone = tapListTemplate.cloneNode(true);
+
+            // set beer-name in this new clone
+
+            tapListClone.querySelector('.tap-name').textContent = `${tap.beer}`;
+
+            // append the clone to .change-tap
+            document.querySelector(".change-tap").appendChild(tapListClone);
+
+            //document.querySelector(".change-tap").textContent = `Change tap ${tap.beer}`;
         };
 
         //append clone to div
         document.querySelector(".status").appendChild(clone);
+
 
 
     });
@@ -94,14 +128,24 @@ function showStorageStatus() {
     //console.log(myObject.storage);
 
     // This is for Section 3: clean container:
-    document.querySelector(".more-beer").innerHTML = "";
+    document.querySelector(".buy-beer").innerHTML = "";
 
     let storage = myObject.storage;
 
     storage.forEach(stor => {
 
         if (stor.amount <= 2) {
-            document.querySelector(".more-beer").textContent = `Buy more: ${stor.name}`
+            let buyListTemplate = document.querySelector('.beer-list-temp').content;
+            //define clone
+            let buyListClone = buyListTemplate.cloneNode(true);
+
+            // set beer-name in this new clone
+
+            buyListClone.querySelector('.more-beer').textContent = `${stor.name}`;
+
+            // append the clone to .change-tap
+            document.querySelector(".buy-beer").appendChild(buyListClone);
+
         };
     });
 
@@ -110,17 +154,20 @@ function showStorageStatus() {
 
 
 // SECTION 5 BEER INFO
+// 5a BEER OVERVIEW
 
 function beerInfo() {
-    console.log(myObject.beertypes);
+    //console.log(myObject.beertypes);
 
     // This is for Section 3: clean container:
     document.querySelector(".beer-info").innerHTML = "";
 
-    let beers = myObject.beertypes;
+    // let beers = myObject.beertypes;
+
+    
 
     beers.forEach(beer => {
-        console.log(beer.name);
+        // console.log(beer.name);
 
         //define template
         let beersTemplate = document.querySelector('.beers-temp').content;
@@ -135,11 +182,34 @@ function beerInfo() {
         //get and display category
         beerClone.querySelector('.beer-category').textContent = `${beer.category}`;
 
+        let button = beerClone.querySelector('.read-more');
+        let modal = beerClone.querySelector(".modal-content");
+
+        button.addEventListener("click", function(){
+            modal.classList.toggle("hide");
+
+        })
+
+        // 5b MORE BEER INFO
+
+
+        beerClone.querySelector(".modal-name").textContent = `${beer.name}`;
+        beerClone.querySelector(".modal-category").textContent = `${beer.category}`;
+        beerClone.querySelector(".modal-description").textContent = `${beer.description.overallImpression}`;
+        beerClone.querySelector(".modal-alc").textContent = `${beer.alc}`;
+
+
+        //modal.classList.remove("hide")
+
         //append clone to div
         document.querySelector(".beer-info").appendChild(beerClone);
     });
 
 };
+
+
+
+
 
 
 
@@ -187,4 +257,4 @@ function bartenderInfo() {
 // RELOAD all 3 sec for development, for presentation set to 10 sec
 setInterval(function () {
     loadScript();
-}, 3000);
+}, 10000);

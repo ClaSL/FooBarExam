@@ -7,78 +7,136 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FooBar Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/new.css" />
-</head>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>FooBar Dashboard</h1>
 
-    <!-- WAITING -->
-    <h1>People in line: </h1>
-    <div class="waiting"></div>
+    <h1 id="title">FooBar Dashboard</h1>
 
-    <!-- SERVED -->
-    <h1>People getting served: </h1>
-    <div class="people-served"></div>
 
-    <!-- BEERS SERVED -->
-    <h1>Beers served today: </h1>
-    <div class="beers-served"></div>
+    <!-- BAR INFO-->
 
-    <!-- TAP STATUS -->
-    <h1>Beers tap status: </h1>
-    <div class="status-wrap">
-        <div class="status"></div>
+    <div id="bar-info">
+        <h1 class="info-title">BAR INFO</h1>
+        <!-- WAITING -->
+        <!-- SERVED -->
+        <!-- BEERS SERVED -->
+
+
+        <h1>People in line: </h1>
+        <h1>People getting served: </h1>
+        <h1>Beers served today: </h1>
+
+        <div class="waiting"></div>
+        <div class="people-served"></div>
+        <div class="beers-served"></div>
+
     </div>
 
-    <template class="status-temp">
-        <div class="capacity">
-            <div class="tap-level"></div>
+
+    <main class="container">
+
+        <!-- BARTENDERS -->
+        <div class="column">
+            <div id="bart-box">
+                <h1 class="info-title">BARTENDERS</h1>
+
+                <div class="bartenders"></div>
+
+                <template class="bartTemp">
+
+                    <h1 class="bartName"></h1>
+                    <h2 class="bartStatus"></h2>
+                    <h2 class="statusDetail"></h2>
+
+                </template>
+            </div>
+
         </div>
-        <span class="beer-tap-name">Name</span>
 
-    </template>
+        <!--ALERT -->
+        <div class="column big-alert-box">
+
+            <!-- Buy more beer -->
+            <h1 class="info-title">ALERT</h1>
+            <div id="beer-alert-box small-alert-box">
 
 
-    <!--ALERT -->
-    <!-- Buy more beer -->
-    <h1>Buy more:</h1>
-    <div class="more-beer"></div>
+                <h1>Buy more:</h1>
+                <ul class="buy-beer"></ul>
 
-    <!-- Change tap-->
-    <h1>Change tap:</h1>
-    <div class="change-tap"></div>
+                <template class="beer-list-temp">
+                    <li>
+                        <span class="more-beer"></span>
+                    </li>
+                </template>
+            </div>
 
+            <div id="tap-alert-box small-alert-box">
+
+                <!-- Change tap-->
+                <h1>Change tap:</h1>
+                <ul class="change-tap"></ul>
+
+                <template class="tap-list-temp">
+                    <li>
+                        <span class="tap-name"></span>
+                    </li>
+                </template>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- TAP STATUS -->
+
+    <div id="big-tap-status-box">
+        <h1>Beers tap status: </h1>
+
+        <div class="status-wrap">
+            <div class="status"></div>
+        </div>
+
+
+        <template class="status-temp">
+
+            <div class="capacity">
+                <div class="tap-level"></div>
+            </div>
+            <span class="beer-tap-name">Name</span>
+
+        </template>
+
+    </div>
 
     <!-- BEER INFO -->
     <div class="beer-info"></div>
 
     <template class="beers-temp">
-        <img class="beer-label" src="">
         <h1 class="beer-name"></h1>
+        <img class="beer-label" src="">
         <h2 class="beer-category"></h2>
+        <button class="read-more">More info</button>
+
+        <!-- MORE BEER INFO-->
+
+        <article class="modal-content hide">
+
+            <h1 class="modal-name"></h1>
+            <h3 class="modal-category"></h3>
+            <p class="modal-alc"></p>
+            <p class="modal-description"></p>
+
+        </article>
+
     </template>
-
-    <!-- BARTENDERS -->
-    <h1>Bartenders</h1>
-
-    <div class="bartenders"></div>
-
-    <template class="bartTemp">
-
-        <h1 class="bartName"></h1>
-        <h2 class="bartStatus"></h2>
-        <h3 class="statusDetail"></h3>
-
-    </template>
-
-
-
-
-
-
-
-
 
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
     <script src="js/main.js"></script>
