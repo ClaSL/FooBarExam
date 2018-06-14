@@ -17,7 +17,7 @@ function getAllData() {
 function loadScript() {
     let data = FooBar.getData(true);
     myObject = JSON.parse(data);
-    console.log(myObject);
+    // console.log(myObject);
 
     myObject.serving.forEach(customer => {
         if (customer.id > lastIdCounted) {
@@ -93,7 +93,7 @@ function showTabStatus() {
 
         // SECTION 4 ALERTS
         // 4.1 CHANGE TAP
-        if (tap.level <= 2450) {
+        if (tap.level <= 500) {
 
             clone.querySelector('.tap-level').style.backgroundColor = "red";
 
@@ -105,7 +105,7 @@ function showTabStatus() {
 
             // set beer-name in this new clone
 
-            tapListClone.querySelector('.tap-name').textContent = `${tap.beer}`;
+            tapListClone.querySelector('.tap-name').textContent = `* ${tap.beer}`;
 
             // append the clone to .change-tap
             document.querySelector(".change-tap").appendChild(tapListClone);
@@ -141,7 +141,7 @@ function showStorageStatus() {
 
             // set beer-name in this new clone
 
-            buyListClone.querySelector('.more-beer').textContent = `${stor.name}`;
+            buyListClone.querySelector('.more-beer').textContent = `* ${stor.name}`;
 
             // append the clone to .change-tap
             document.querySelector(".buy-beer").appendChild(buyListClone);
@@ -193,7 +193,7 @@ function beerInfo() {
         // 5b MORE BEER INFO
 
 
-        
+
         beerClone.querySelector(".modal-description").textContent = `${beer.description.overallImpression}`;
         beerClone.querySelector(".modal-alc").textContent = `${beer.alc}% alc`;
 
@@ -242,11 +242,11 @@ function bartenderInfo() {
         bartClone.querySelector('.statusDetail').textContent = `${bart.statusDetail}`;
 
         if (bart.status === "WORKING") {
-            bartClone.querySelector('.bartStatus').style.backgroundColor = "green";
+            bartClone.querySelector('.bartStatus').style.color = "green";
         } else {
-            bartClone.querySelector('.bartStatus, .statusDetail, .bartName').style.opacity = 0.5;
+            bartClone.querySelector('.bartStatus').style.opacity = 0.3;
         };
-    
+
 
         //Adjustment of activity string
         if (bart.statusDetail === "pourBeer") {
@@ -274,4 +274,4 @@ function bartenderInfo() {
 // RELOAD all 3 sec for development, for presentation set to 10 sec
 setInterval(function () {
     loadScript();
-}, 10000);
+}, 5000);

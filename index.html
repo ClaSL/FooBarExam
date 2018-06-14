@@ -25,9 +25,9 @@
         <!-- BEERS SERVED -->
 
 
-        <h2>People in line: </h2>
-        <h2>People getting served: </h2>
-        <h2>Beers served today: </h2>
+        <h2>WAITING: </h2>
+        <h2>SERVED: </h2>
+        <h2>TOTAL BEERS: </h2>
 
         <div class="waiting"></div>
         <div class="people-served"></div>
@@ -74,7 +74,7 @@
                 </template>
             </div>
 
-            <div id="tap-alert-box small-alert-box">
+            <div id="tap-alert-box">
 
                 <!-- Change tap-->
                 <h2>CHANGE TAP:</h2>
@@ -99,18 +99,15 @@
     <div id="big-tap-status-box">
         <h1>&lt; BEER TAP STATUS &gt;</h1>
 
-        <div class="status-wrap">
-            <div class="status"></div>
-        </div>
-
+        <div class="status"></div>
 
         <template class="status-temp">
-
-            <div class="capacity">
-                <div class="tap-level"></div>
+            <div class="status-wrap">
+                <div class="capacity">
+                    <div class="tap-level"></div>
+                </div>
+                <span class="beer-tap-name">Name</span>
             </div>
-            <span class="beer-tap-name">Name</span>
-
         </template>
 
     </div>
@@ -118,27 +115,31 @@
     <!-- BEER INFO -->
 
     <div id="big-beer-info-box">
-            <h1>&lt; BEER INFO &gt;</h1>
-    <div class="beer-info"></div>
+        <h1>&lt; BEER INFO &gt;</h1>
+        <div class="beer-info"></div>
 
-    <template class="beers-temp">
-        <img class="beer-label" src="">
-        <h1 class="beer-name"></h1>
-        <h2 class="beer-category"></h2>
-        <button class="read-more">More info</button>
+        <template class="beers-temp">
+            <div class="single-beer-info">
+                <div class="label-box">
+                    <img class="beer-label" src="">
+                </div>
+                <h1 class="beer-name"></h1>
+                <h2 class="beer-category"></h2>
+                <button class="read-more">more info</button>
+            </div>
 
-        <!-- MORE BEER INFO-->
+            <!-- MORE BEER INFO-->
 
-        <article class="modal-content hide">
+            <article class="modal-content hide">
 
-            <h3 class="modal-alc"></h3>
-            <p class="modal-description"></p>
+                <h3 class="modal-alc"></h3>
+                <p class="modal-description"></p>
 
-        </article>
+            </article>
 
-    </template>
+        </template>
 
-</div>
+    </div>
 
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
     <script src="js/main.js"></script>
